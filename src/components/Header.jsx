@@ -56,7 +56,7 @@ const Header = () => {
     <header>
       <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
-          Welcome to our store, <span>Himu Chowdhury</span>
+          Welcome, <span>Himu Chowdhury</span>
         </h1>
        
         <div className="space-x-5 md:py-0 py-5">

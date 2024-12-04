@@ -2,6 +2,7 @@
 import { Helmet } from "react-helmet-async";
 import { FcGoogle } from "react-icons/fc";
 import { FiMail, FiLock } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const handleLogin = (e) => {
@@ -69,12 +70,12 @@ const Login = () => {
           </form>
           <p className="mt-6 text-center text-gray-600">
             {`Don't`} have an account?
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="text-purple-600 hover:text-purple-800 ml-1 font-semibold"
             >
               Register
-            </a>
+            </Link>
           </p>
         </div>
       </div>
