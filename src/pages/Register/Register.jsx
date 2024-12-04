@@ -1,13 +1,61 @@
 // import { useContext } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { FcGoogle } from "react-icons/fc";
 import { FiMail, FiLock, FiUser, FiImage } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/Context";
+import Swal from "sweetalert2";
 // import { AuthContext } from "../../providers/Context";
 
 const Register = () => {
 
-   
+    const {createUser} = useContext(AuthContext);
+
+    const location = useNavigate();
+
+  const regEx = '^(?=.*[A-Z])(?=.*[a-z]).{6,}$';
+ 
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoURL = form.photoURL.value;
+    const formData  = {name, email, password, photoURL}
+    if (!password.match(regEx)) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Password must be at least 6 characters long and contain at least one uppercase letter and one lowercase letter.",
+        });
+        return;
+      }
+    console.log(formData);
+    createUser(email, password)
+    .then(result => {
+        console.log('user created at firebase', result.user);
+
+        result.user.displayName = name;
+        result.user.photoURL = photoURL;
+
+        e.target.reset();
+          Swal.fire({
+            icon: "success",
+            title: "Registration Success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          location("/");
+
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
   return (
     <div className="pt-5 flex items-center justify-center ">
     <Helmet>
@@ -35,7 +83,7 @@ const Register = () => {
             <div className="border-t w-full border-gray-300 dark:border-gray-600"></div>
           </div>
 
-          <form className="space-y-5">
+          <form onSubmit={handleRegister} className="space-y-5">
           <div className="group relative">
             <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input

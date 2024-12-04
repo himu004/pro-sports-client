@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import logo from "../assets/logo2.png";
 
 const Header = () => {
   // const toggleDarkMode = () => {
@@ -105,7 +106,10 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">ProSports</a>
+          <Link className="btn btn-ghost text-xl">
+            <img className="w-10" src={logo} alt="" />
+            ProSports
+            </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
