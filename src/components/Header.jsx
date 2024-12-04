@@ -7,10 +7,10 @@ import { FaRegCircleUser } from "react-icons/fa6";
 
 const Header = () => {
   const { user, loading, signOutUser } = useContext(AuthContext);
-  console.log(user);
+//   console.log(user);
 
   const { displayName, photoURL } = user || {};
-  console.log(displayName, photoURL);
+//   console.log(displayName, photoURL);
 
   const links = (
     <>
@@ -36,7 +36,7 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          to="/all-equipment"
+          to="/add-equipment"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
           }
@@ -46,7 +46,7 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          to="/all-equipment"
+          to="/my-equipment"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
           }
@@ -61,43 +61,47 @@ const Header = () => {
     <header>
       <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
-          Welcome <span className="font-bold text-lg">{displayName}</span>
+         {
+            user ? <p>Welcome <span className="font-bold text-lg">{`${displayName}`}</span></p> : <p className="text-lg"><span className="font-bold">Welcome</span> to our shop</p>
+         }
         </h1>
-        {user ? (
+        { user ? (
           <div className="flex items-center space-x-5 md:py-0 py-5">
             <div className="dropdown dropdown-end ">
-            <div
-              tabIndex={0}
-              role="button"
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={displayName}
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
-                {user.photoURL ? (
-                  <img alt="Profile Picture" src={photoURL} />
-                ) : (
-                  <FaRegCircleUser className="text-5xl p-1 w-full" />
-                )}
+              <div
+                tabIndex={0}
+                role="button"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={displayName}
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
+                  {user.photoURL ? (
+                    <img alt="Profile Picture" src={photoURL} />
+                  ) : (
+                    <FaRegCircleUser className="text-5xl p-1 w-full" />
+                  )}
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <button onClick={() => signOutUser()}>Logout</button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            <button
+              className="btn btn-outline btn-info btn-sm"
+              onClick={() => signOutUser()}
             >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <button onClick={() => signOutUser()}>Logout</button>
-              </li>
-            </ul>
-            
-          </div>
-          <button className="btn btn-outline btn-info btn-sm" onClick={() => signOutUser()}>
               Logout
             </button>
           </div>
