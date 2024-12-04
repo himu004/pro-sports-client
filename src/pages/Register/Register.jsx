@@ -6,7 +6,7 @@ import { FiMail, FiLock, FiUser, FiImage } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/Context";
 import Swal from "sweetalert2";
-// import { AuthContext } from "../../providers/Context";
+
 
 const Register = () => {
   const { createUser, signUpWithGoogle } = useContext(AuthContext);

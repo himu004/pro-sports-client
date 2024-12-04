@@ -1,51 +1,77 @@
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
-import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const Banner = () => {
     return (
-        <AwesomeSlider
-            animation="cubeAnimation"
-            className="h-[600px]"
-        >
-            <div className="relative">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Sports Sneakers" className="w-full" />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <div className="text-white text-center px-4">
-                        <h2 className="text-4xl font-bold mb-4">Elite Performance Sneakers</h2>
-                        <p className="text-xl">Dominate the court with cutting-edge footwear</p>
+        <div className="h-[600px] w-full">
+            <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper h-full"
+            >
+                <SwiperSlide>
+                    <div className="hero h-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1593419528756-3cdfa1645f23)'}}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-md">
+                                <h1 className="mb-5 text-5xl font-bold">Premium Sports Apparel</h1>
+                                <p className="mb-5">Discover our collection of high-performance athletic wear designed for champions</p>
+                                <button className="btn btn-primary">Shop Now</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="relative">
-                <img src="https://images.unsplash.com/photo-1577212017984-e8c7acd382ba" alt="Sports Jersey" className="w-full" />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <div className="text-white text-center px-4">
-                        <h2 className="text-4xl font-bold mb-4">Premium Team Jerseys</h2>
-                        <p className="text-xl">Wear your pride with authentic team colors</p>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="hero h-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1556906781-9a412961c28c)'}}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-md">
+                                <h1 className="mb-5 text-5xl font-bold">Elite Sports Shoes</h1>
+                                <p className="mb-5">Step into greatness with our cutting-edge athletic footwear collection</p>
+                                <button className="btn btn-primary">Explore</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="relative">
-                <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da" alt="Baseball Equipment" className="w-full" />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <div className="text-white text-center px-4">
-                        <h2 className="text-4xl font-bold mb-4">Pro Baseball Gear</h2>
-                        <p className="text-xl">Hit home runs with major league quality bats</p>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="hero h-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1517466787929-bc90951d0974)'}}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-md">
+                                <h1 className="mb-5 text-5xl font-bold">Official Jerseys</h1>
+                                <p className="mb-5">Wear your team pride with our authentic sports jerseys collection</p>
+                                <button className="btn btn-primary">View Collection</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            
-            <div className="relative">
-                <img src="https://images.unsplash.com/photo-1509255929945-586a420363cf" alt="Training Equipment" className="w-full" />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <div className="text-white text-center px-4">
-                        <h2 className="text-4xl font-bold mb-4">Pro Training Gear</h2>
-                        <p className="text-xl">Level up your game with professional equipment</p>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="hero h-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1535131749006-b7f58c99034b)'}}>
+                        <div className="hero-overlay bg-opacity-60"></div>
+                        <div className="hero-content text-center text-neutral-content">
+                            <div className="max-w-md">
+                                <h1 className="mb-5 text-5xl font-bold">Sports Equipment</h1>
+                                <p className="mb-5">Professional grade equipment for every sport and athlete</p>
+                                <button className="btn btn-primary">Browse Equipment</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </AwesomeSlider>
+                </SwiperSlide>
+            </Swiper>
+        </div>
     );
 };
 

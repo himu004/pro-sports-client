@@ -10,7 +10,9 @@ const Login = () => {
   const {
     user,
     signInUser,
+    signOutUser,
     signUpWithGoogle,
+    passwordResetEmail,
   } = useContext(AuthContext);
 
   const location = useNavigate();
@@ -21,8 +23,8 @@ const Login = () => {
 
     const email = form.email.value;
     const password = form.password.value;
-    // const formData = { name, email };
-    // console.log(formData);
+    const formData = { name, email };
+    console.log(formData);
 
     signInUser(email, password)
       .then((res) => {
@@ -37,7 +39,7 @@ const Login = () => {
         location("/");
       })
       .catch((err) => {
-        // console.log(err.message);
+        console.log(err.message);
         const errorr = err.message;
         Swal.fire({
           icon: "error",
