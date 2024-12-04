@@ -29,19 +29,54 @@ const Header = () => {
           All Equipment
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/all-equipment"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          Add Equipment
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-equipment"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          My Equipment
+        </NavLink>
+      </li>
     </>
   );
 
   return (
     <header>
-      <div className="pt-5 px-5 flex justify-between">
+      <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
           Welcome to our store, <span>Himu Chowdhury</span>
         </h1>
        
-        <div className="space-x-5">
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+        <div className="space-x-5 md:py-0 py-5">
+        <NavLink
+          to="/login"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "underline" : ""
+          }
+        >
+          Login
+        </NavLink>
+        <NavLink
+          to="/register"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "underline" : ""
+          }
+        >
+          Register
+        </NavLink>
+          
         </div>
       </div>
       <div className="navbar bg-base-100">
