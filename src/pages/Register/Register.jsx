@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser, signUpWithGoogle} = useContext(AuthContext);
 
     const location = useNavigate();
 
@@ -45,15 +45,53 @@ const Register = () => {
             icon: "success",
             title: "Registration Success",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           });
           location("/");
 
+        // const createdAt = result?.user?.metadata?.creationTime;
+
+        // Save new user to db
+        // const newUser = {name, email, photoURL, createdAt}
+        // fetch('http://localhost:3000/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type' : 'application/json'
+        //     },
+        //     body: JSON.stringify(newUser)
+        // })
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log('user created to db',data);
+        // })
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+      });
+  };
+
+  const handleSignUpWithGoogle = (e) => {
+    
+    if (e) {
+      e.preventDefault();
+    }
+    
+    signUpWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+            icon: "success",
+            title: "Registration Success with Google",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        location("/");
+      })
+      .catch((error) => {
+       
+        console.log(error.message);
       });
   };
   return (
@@ -67,7 +105,9 @@ const Register = () => {
             Welcome Back
           </h2>
           <div className="mb-6">
-            <button className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-white dark:bg-gray-800 border-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-300 shadow-md">
+            <button 
+            onClick={handleSignUpWithGoogle}
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-white dark:bg-gray-800 border-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-300 shadow-md">
               <FcGoogle className="text-2xl" />
               <span className="font-semibold text-gray-700 dark:text-gray-300">
                 Continue with Google
