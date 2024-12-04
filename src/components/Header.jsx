@@ -1,12 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import logo from "../assets/logo2.png";
+import { AuthContext } from "../providers/Context";
+import { useContext } from "react";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const Header = () => {
-  // const toggleDarkMode = () => {
-  //     setDarkMode(!darkMode);
-  //     document.body.classList.toggle('dark-mode', !darkMode);
-  // };
+  const { user, loading, signOutUser } = useContext(AuthContext);
+  console.log(user);
+
+  const { displayName, photoURL } = user || {};
+  console.log(displayName, photoURL);
 
   const links = (
     <>
@@ -57,28 +61,66 @@ const Header = () => {
     <header>
       <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
-          Welcome, <span>Himu Chowdhury</span>
+          Welcome <span className="font-bold text-lg">{displayName}</span>
         </h1>
-       
-        <div className="space-x-5 md:py-0 py-5">
-        <NavLink
-          to="/login"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "underline" : ""
-          }
-        >
-          Login
-        </NavLink>
-        <NavLink
-          to="/register"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "underline" : ""
-          }
-        >
-          Register
-        </NavLink>
-          
-        </div>
+        {user ? (
+          <div className="flex items-center space-x-5 md:py-0 py-5">
+            <div className="dropdown dropdown-end ">
+            <div
+              tabIndex={0}
+              role="button"
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={displayName}
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
+                {user.photoURL ? (
+                  <img alt="Profile Picture" src={photoURL} />
+                ) : (
+                  <FaRegCircleUser className="text-5xl p-1 w-full" />
+                )}
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <button onClick={() => signOutUser()}>Logout</button>
+              </li>
+            </ul>
+            
+          </div>
+          <button className="btn btn-outline btn-info btn-sm" onClick={() => signOutUser()}>
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="space-x-5 md:py-0 py-5">
+            <NavLink
+              to="/login"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "underline" : ""
+              }
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "underline" : ""
+              }
+            >
+              Register
+            </NavLink>
+          </div>
+        )}
       </div>
       <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -109,17 +151,13 @@ const Header = () => {
           <Link className="btn btn-ghost text-xl">
             <img className="w-10" src={logo} alt="" />
             ProSports
-            </Link>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <label
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content='Toggle Theme' 
-            className="flex cursor-pointer gap-2"
-          >
+          <label className="flex cursor-pointer gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -155,7 +193,7 @@ const Header = () => {
           </label>
         </div>
       </div>
-      <Tooltip id="my-tooltip" />
+      <Tooltip id="my-tooltip" place="bottom-end" arrowColor="#c1121f" />
     </header>
   );
 };
