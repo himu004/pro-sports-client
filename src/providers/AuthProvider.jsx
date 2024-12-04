@@ -8,10 +8,11 @@ import {
     signOut,
     updateProfile,
   } from "firebase/auth";
-  import auth from "../firebase/firebase.init";
-  import { AuthContext } from "./Context";
+  import auth from "../firebase/firebase.config.js";
+//   import { AuthContext } from "./Context";
   import { useEffect, useState } from "react";
   import { GoogleAuthProvider } from "firebase/auth";
+import { AuthContext } from "./Context.js";
   
   const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
