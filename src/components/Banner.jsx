@@ -23,13 +23,13 @@ const Banner = () => {
                 className="mySwiper h-full"
             >
                 <SwiperSlide>
-                    <div className="hero h-full" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1593419528756-3cdfa1645f23)'}}>
+                    <div className="hero h-full" style={{backgroundImage: 'url(https://i.pinimg.com/736x/ef/fe/60/effe608b363ef70e803bbe7c6d4b76a7.jpg)'}}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
                             <div className="max-w-md">
                                 <h1 className="mb-5 text-5xl font-bold">Premium Sports Apparel</h1>
                                 <p className="mb-5">Discover our collection of high-performance athletic wear designed for champions</p>
-                                <button className="btn btn-primary">Shop Now</button>
+                                <button className="btn btn-neutral">Shop Now</button>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ const Banner = () => {
                             <div className="max-w-md">
                                 <h1 className="mb-5 text-5xl font-bold">Elite Sports Shoes</h1>
                                 <p className="mb-5">Step into greatness with our cutting-edge athletic footwear collection</p>
-                                <button className="btn btn-primary">Explore</button>
+                                <button className="btn btn-neutral">Explore</button>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@ const Banner = () => {
                             <div className="max-w-md">
                                 <h1 className="mb-5 text-5xl font-bold">Official Jerseys</h1>
                                 <p className="mb-5">Wear your team pride with our authentic sports jerseys collection</p>
-                                <button className="btn btn-primary">View Collection</button>
+                                <button className="btn btn-neutral">View Collection</button>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ const Banner = () => {
                             <div className="max-w-md">
                                 <h1 className="mb-5 text-5xl font-bold">Sports Equipment</h1>
                                 <p className="mb-5">Professional grade equipment for every sport and athlete</p>
-                                <button className="btn btn-primary">Browse Equipment</button>
+                                <button className="btn btn-neutral">Browse Equipment</button>
                             </div>
                         </div>
                     </div>

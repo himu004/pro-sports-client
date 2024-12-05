@@ -5,7 +5,7 @@ import { FaLinkedin } from 'react-icons/fa6';
 const Footer = () => {
     return (
         <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 mt-20">
-            <div className='flex items-center gap-5'>
+            <div className='md:flex items-center gap-5'>
             <img className='w-14' src={logo} alt="" />
             <h1 className='text-5xl font-bold'>Pro Sports</h1>
             </div>

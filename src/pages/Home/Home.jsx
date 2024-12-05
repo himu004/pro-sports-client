@@ -1,7 +1,9 @@
 import AllCategories from "../../components/AllCategories";
+import ASection from "../../components/ASection";
 import Banner from "../../components/Banner";
 import OurBrands from "../../components/OurBrands";
 import Products from "../../components/products";
+import QnA from "../../components/QnA";
 
 
 const Home = () => {
@@ -11,6 +13,8 @@ const Home = () => {
             <OurBrands/>
             <Products/>
             <AllCategories/>
+            <ASection />
+            <QnA />
         </div>
     );
 };
