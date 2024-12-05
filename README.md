@@ -1,4 +1,4 @@
-# Pro Sports | A Sports Equipment Store 
+# <img width="30px" src="/public/logo2.png"/>  Pro Sports | A Sports Equipment Store 
 
 # Live Link [ Here ](https://pro-sports.netlify.app/)
 
