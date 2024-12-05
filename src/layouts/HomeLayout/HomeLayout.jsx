@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import Footer from "../../components/Footer";
 
 const HomeLayout = () => {
   return (
@@ -11,6 +12,7 @@ const HomeLayout = () => {
         </Helmet>
         <Header />
         <Outlet />
+        <Footer />
       </HelmetProvider>
     </div>
   );

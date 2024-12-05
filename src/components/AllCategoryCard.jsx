@@ -1,7 +1,7 @@
 const AllCategoryCard = ({ category }) => {
     const { image, categoryName } = category || {};
     return (
-        <div className="card bg-base-100 image-full shadow-xl relative group">
+        <div className="card bg-base-100 image-full shadow-xl relative group h-40">
             <figure>
                 <img src={image} alt={categoryName} className="w-full h-full object-cover" />
             </figure>

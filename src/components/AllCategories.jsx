@@ -8,7 +8,7 @@ const AllCategories = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/products")
+        fetch("http://localhost:3000/category")
           .then((res) => res.json())
           .then((data) => setCategories(data));
       }, []);
