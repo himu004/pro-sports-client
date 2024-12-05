@@ -1,3 +1,4 @@
+import AllCategories from "../../components/AllCategories";
 import Banner from "../../components/Banner";
 import OurBrands from "../../components/OurBrands";
 import Products from "../../components/products";
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner />
             <OurBrands/>
             <Products/>
+            <AllCategories/>
         </div>
     );
 };
