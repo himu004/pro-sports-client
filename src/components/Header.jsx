@@ -99,7 +99,7 @@ const Header = () => {
                 tabIndex={0}
                 role="button"
                 data-tooltip-id="my-tooltip"
-                data-tooltip-content={savedUser?.name}
+                data-tooltip-content={savedUser?.name || displayName}
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">

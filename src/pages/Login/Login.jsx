@@ -20,8 +20,8 @@ const Login = () => {
 
     const email = form.email.value;
     const password = form.password.value;
-    const formData = { name, email };
-    console.log(formData);
+    // const formData = { name, email };
+    // console.log(formData);
 
     signInUser(email, password)
       .then((res) => {

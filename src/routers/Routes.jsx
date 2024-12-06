@@ -46,7 +46,7 @@ const router = createBrowserRouter([
           element: <PrivateRoutes>
             <MyEquipment />
           </PrivateRoutes>,
-          loader: () => fetch('http://localhost:3000/my-equipment'),
+          loader: () => fetch('https://pro-sports-server.vercel.app/my-equipment'),
         },
         {
           path: "/products/:id",

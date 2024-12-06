@@ -1,15 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 import Footer from "../../components/Footer";
+import { HelmetProvider } from "react-helmet-async";
 
 const HomeLayout = () => {
   return (
     <div>
       <HelmetProvider>
-        <Helmet>
-          <title>Home | Pro Sports</title>
-        </Helmet>
         <Header />
         <Outlet />
         <Footer />

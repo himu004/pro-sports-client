@@ -5,27 +5,10 @@ import MyEquipmentCard from "./MyEquipmentCard";
 
 const MyEquipment = () => {
     const data = useLoaderData();
+
     const [addedEquipment, setAddedEquipment] = useState(data);
 
     const { user } = useContext(AuthContext);
-
-    const {
-        image,
-        itemName,
-        categoryName,
-        description,
-        price,
-        rating,
-        customization,
-        processingTime,
-        stockStatus,
-        addedBy,
-    } = data[0] || {};
-
-    // const { email } = addedBy || {};
-    //   const { email } = user || {};
-
-    // console.log(addedBy);
 
     const filterByUser = () => {
         if (!user || !user.email) return [];
@@ -42,7 +25,10 @@ const MyEquipment = () => {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  py-10">
             {filteredEquipment.length > 0 ? (
                 filteredEquipment.map((equipment, index) => (
-                    <MyEquipmentCard key={index} equipment={equipment} />
+                    <MyEquipmentCard key={index} 
+                    equipment={equipment} 
+                    addedEquipment={addedEquipment}
+                    setAddedEquipment={setAddedEquipment} />
                 ))
             ) : (
                 <p className="text-center font-bold text-5xl">No equipment added by you.</p>

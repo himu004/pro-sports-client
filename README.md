@@ -11,6 +11,9 @@ This is a sports equipment store that sells a variety of sports equipment. The s
 - Register as our member
 - Register and login with Google Auth
 - Your Personal Data Highly Secure in firebase
+- Logged User Can Add Their Desired Product
+- Logged User Can Remove Their Product
+- User Can Update Their Product Information 
 
 
 ## Techology Used For This Project
