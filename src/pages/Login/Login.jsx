@@ -8,11 +8,8 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const {
-    user,
     signInUser,
-    signOutUser,
     signUpWithGoogle,
-    passwordResetEmail,
   } = useContext(AuthContext);
 
   const location = useNavigate();

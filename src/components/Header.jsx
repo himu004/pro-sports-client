@@ -25,27 +25,6 @@ const Header = () => {
 }, [email]);
 
 
-// {
-//     user ? (
-//         <p>Welcome <span className="font-bold text-lg"></span>
-//             {displayName || savedUser?.name}
-//         </span></p>
-//     ) : (
-//         <p className="text-lg"><span className="font-bold">Welcome</span> to our shop</p>
-//     )
-// }
-
-// // And update the avatar section:
-
-// <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
-//     {user ? (
-//         <img alt="Profile Picture" src={photoURL || savedUser?.photo} />
-//     ) : (
-//         <FaRegCircleUser className="text-5xl p-1 w-full" />
-//     )}
-// </div>
-
-
 
   const links = (
     <>
