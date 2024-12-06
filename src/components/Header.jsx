@@ -7,24 +7,22 @@ import { AuthContext } from "../providers/Context";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const Header = () => {
-    const [savedUser, setSavedUser] = useState(null);
+  const [savedUser, setSavedUser] = useState(null);
   const { user, loading, signOutUser } = useContext(AuthContext);
-//   console.log(user);
+  //   console.log(user);
 
   const { displayName, photoURL, email } = user || {};
 
   useEffect(() => {
     if (email) {
-        fetch("https://pro-sports-server.vercel.app/users")
-            .then((res) => res.json())
-            .then((data) => {
-                const loggedInUser = data.find(user => user.email === email);
-                setSavedUser(loggedInUser);
-            });
+      fetch("https://pro-sports-server.vercel.app/users")
+        .then((res) => res.json())
+        .then((data) => {
+          const loggedInUser = data.find((user) => user.email === email);
+          setSavedUser(loggedInUser);
+        });
     }
-}, [email]);
-
-
+  }, [email]);
 
   const links = (
     <>
@@ -75,11 +73,20 @@ const Header = () => {
     <header>
       <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
-         {
-            user ? <p>Welcome <span className="font-bold text-lg">{`${savedUser?.name || displayName}`}</span></p> : <p className="text-lg"><span className="font-bold">Welcome</span> to our shop</p>
-         }
+          {user ? (
+            <p>
+              Welcome{" "}
+              <span className="font-bold text-lg">{`${
+                savedUser?.name || displayName
+              }`}</span>
+            </p>
+          ) : (
+            <p className="text-lg">
+              <span className="font-bold">Welcome</span> to our shop
+            </p>
+          )}
         </h1>
-        { user ? (
+        {user ? (
           <div className="flex items-center space-x-5 md:py-0 py-5">
             <div className="dropdown dropdown-end ">
               <div
@@ -91,7 +98,10 @@ const Header = () => {
               >
                 <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
                   {user ? (
-                    <img alt="Profile Picture" src={savedUser?.photo || photoURL} />
+                    <img
+                      alt="Profile Picture"
+                      src={savedUser?.photo || photoURL}
+                    />
                   ) : (
                     <FaRegCircleUser className="text-5xl p-1 w-full" />
                   )}
