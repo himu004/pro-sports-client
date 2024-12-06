@@ -1,12 +1,8 @@
-
-
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 // eslint-disable-next-line react/prop-types
-const MyEquipmentCard = ({ equipment, addedEquipment,setAddedEquipment }) => {
-
-   
+const MyEquipmentCard = ({ equipment, addedEquipment, setAddedEquipment }) => {
   const {
     _id,
     image,
@@ -21,50 +17,46 @@ const MyEquipmentCard = ({ equipment, addedEquipment,setAddedEquipment }) => {
     addedBy,
   } = equipment || {};
 
-
   const handleDelete = (id) => {
-
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
         fetch(`https://pro-sports-server.vercel.app/my-equipment/${id}`, {
-            method: "DELETE",
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.deletedCount > 0) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                  });
-                  const updatedData = addedEquipment.filter((item) => item._id !== id);
-                  setAddedEquipment(updatedData);
-                  
-              } else {
-                Swal.fire({
-                    title: "Error!",
-                    text: "Something went wrong.",
-                    icon: "error"
-                  });
-              }
-            });
-        }
-      });
-     
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              const updatedData = addedEquipment.filter(
+                (item) => item._id !== id
+              );
+              setAddedEquipment(updatedData);
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Something went wrong.",
+                icon: "error",
+              });
+            }
+          });
+      }
+    });
   };
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full">
-      
       <figure className="px-6 pt-6">
         <img
           src={image}
@@ -112,9 +104,12 @@ const MyEquipmentCard = ({ equipment, addedEquipment,setAddedEquipment }) => {
           <span className="font-semibold">Stock:</span> {stock}
         </p>
         <div className="mt-4 flex gap-3">
-          <button 
-          onClick={() => {handleDelete(_id)}}
-          className="btn btn-square btn-outline flex-1 hover:btn-error">
+          <button
+            onClick={() => {
+              handleDelete(_id);
+            }}
+            className="btn btn-square btn-outline flex-1 hover:btn-error"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -130,7 +125,9 @@ const MyEquipmentCard = ({ equipment, addedEquipment,setAddedEquipment }) => {
               />
             </svg>
           </button>
-          <Link className="btn btn-neutral btn-outline flex-1 hover:btn-success">
+          <Link 
+          to={`/update-equipment/${_id}`}
+          className="btn btn-neutral btn-outline flex-1 hover:btn-success">
             Update Product
           </Link>
         </div>
@@ -138,6 +135,5 @@ const MyEquipmentCard = ({ equipment, addedEquipment,setAddedEquipment }) => {
     </div>
   );
 };
-
 
 export default MyEquipmentCard;

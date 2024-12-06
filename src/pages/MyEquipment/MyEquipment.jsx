@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/Context";
 import MyEquipmentCard from "./MyEquipmentCard";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 
 const MyEquipment = () => {
   const data = useLoaderData();
