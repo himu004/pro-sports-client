@@ -1,30 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { FaSortAmountUp } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../providers/Context";
+
 
 const AllEquipment = () => {
     const data = useLoaderData();
     // console.log(data);
-
-    const [savedUser, setSavedUser] = useState(null);
+    
     const [sortedData, setSortedData] = useState(data);
-    const { user, loading } = useContext(AuthContext);
-    //   console.log(user);
-
-    const { displayName, email } = user || {};
-
-    useEffect(() => {
-        if (email) {
-            fetch("https://pro-sports-server.vercel.app/users")
-                .then((res) => res.json())
-                .then((data) => {
-                    const loggedInUser = data.find((user) => user.email === email);
-                    setSavedUser(loggedInUser);
-                });
-        }
-    }, [email]);
-
+  
     const handleSortByPrice = () => {
         const newData = [...data].sort((a, b) => b.price - a.price);
         setSortedData(newData);
@@ -56,7 +40,7 @@ const AllEquipment = () => {
                                 <td>{item.itemName}</td>
                                 <td>{item.category}</td>
                                 <td>{item.price}</td>
-                                <td>{loading? <span className="loading loading-infinity loading-lg"></span> : user ? displayName || savedUser?.name : ""}</td>
+                                <td>{item.addedBy.name}</td>
                                 <td>
                                     <Link to={`/all-equipment/${item._id}`} className="btn btn-neutral btn-outline btn-sm">
                                         View Details

@@ -40,7 +40,7 @@ const AddEquipment = () => {
      description,
      addedBy
     };
-    console.log(formData);
+    // console.log(formData);
 
     fetch('https://pro-sports-server.vercel.app/new-equipment', {
         method: 'POST',

@@ -58,7 +58,7 @@ import { AuthContext } from "./Context.js";
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         setLoading(false);
-        console.log('currently Logged in' , currentUser);
+        // console.log('currently Logged in');
       });
   
       return () => {
