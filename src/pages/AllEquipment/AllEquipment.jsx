@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FaSortAmountUp } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/Context";
 
 const AllEquipment = () => {
@@ -58,9 +58,9 @@ const AllEquipment = () => {
                                 <td>{item.price}</td>
                                 <td>{loading? <span className="loading loading-infinity loading-lg"></span> : user ? displayName || savedUser?.name : ""}</td>
                                 <td>
-                                    <button className="btn btn-neutral btn-outline btn-sm">
+                                    <Link to={`/all-equipment/${item._id}`} className="btn btn-neutral btn-outline btn-sm">
                                         View Details
-                                    </button>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}

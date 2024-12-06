@@ -10,6 +10,7 @@ import AddEquipment from "../pages/AddEquipment/AddEquipment";
 import MyEquipment from "../pages/MyEquipment/MyEquipment";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import ViewDetails from "../pages/AllEquipment/ViewDetails";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
         {
           path: "/all-equipment",
           element: <AllEquipment />,
-          loader: () => fetch('http://localhost:3000/all-equipment'),
+          loader: () => fetch('https://pro-sports-server.vercel.app/all-equipment'),
         },
         {
           path: "/add-equipment",
@@ -63,6 +64,13 @@ const router = createBrowserRouter([
           element: <PrivateRoutes>
             <MyProfile />
           </PrivateRoutes>,
+        },
+        {
+          path: "/all-equipment/:id",
+          element: <PrivateRoutes>
+            <ViewDetails />
+          </PrivateRoutes>,
+          loader: ({params}) => fetch(`https://pro-sports-server.vercel.app/all-equipment/${params.id}`),
         },
       ]
     },
