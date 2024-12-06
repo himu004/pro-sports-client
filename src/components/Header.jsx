@@ -1,16 +1,51 @@
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import logo from "../assets/logo2.png";
+import { useContext, useEffect, useState } from "react";
+
 import { AuthContext } from "../providers/Context";
-import { useContext } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const Header = () => {
+    const [savedUser, setSavedUser] = useState(null);
   const { user, loading, signOutUser } = useContext(AuthContext);
 //   console.log(user);
 
-  const { displayName, photoURL } = user || {};
-//   console.log(displayName, photoURL);
+  const { displayName, photoURL, email } = user || {};
+
+  useEffect(() => {
+    if (email) {
+        fetch("https://pro-sports-server.vercel.app/users")
+            .then((res) => res.json())
+            .then((data) => {
+                const loggedInUser = data.find(user => user.email === email);
+                setSavedUser(loggedInUser);
+            });
+    }
+}, [email]);
+
+
+// {
+//     user ? (
+//         <p>Welcome <span className="font-bold text-lg"></span>
+//             {displayName || savedUser?.name}
+//         </span></p>
+//     ) : (
+//         <p className="text-lg"><span className="font-bold">Welcome</span> to our shop</p>
+//     )
+// }
+
+// // And update the avatar section:
+
+// <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
+//     {user ? (
+//         <img alt="Profile Picture" src={photoURL || savedUser?.photo} />
+//     ) : (
+//         <FaRegCircleUser className="text-5xl p-1 w-full" />
+//     )}
+// </div>
+
+
 
   const links = (
     <>
@@ -62,7 +97,7 @@ const Header = () => {
       <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
          {
-            user ? <p>Welcome <span className="font-bold text-lg">{`${displayName}`}</span></p> : <p className="text-lg"><span className="font-bold">Welcome</span> to our shop</p>
+            user ? <p>Welcome <span className="font-bold text-lg">{`${savedUser?.name || displayName}`}</span></p> : <p className="text-lg"><span className="font-bold">Welcome</span> to our shop</p>
          }
         </h1>
         { user ? (
@@ -72,12 +107,12 @@ const Header = () => {
                 tabIndex={0}
                 role="button"
                 data-tooltip-id="my-tooltip"
-                data-tooltip-content={displayName}
+                data-tooltip-content={savedUser?.name}
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full ring-2 ring-info ring-offset-2">
-                  {user.photoURL ? (
-                    <img alt="Profile Picture" src={photoURL} />
+                  {user ? (
+                    <img alt="Profile Picture" src={savedUser?.photo || photoURL} />
                   ) : (
                     <FaRegCircleUser className="text-5xl p-1 w-full" />
                   )}
@@ -88,10 +123,10 @@ const Header = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link to="/my-profile" className="justify-between">
                     Profile
                     <span className="badge">New</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <button onClick={() => signOutUser()}>Logout</button>

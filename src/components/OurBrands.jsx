@@ -15,7 +15,7 @@ const OurBrands = () => {
   return (
     <div className="max-w-screen-xl mx-auto mt-20">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-800 mb-3">
+        <h2 className="text-4xl font-bold text-gray-500 mb-3">
           Our Top Brands
         </h2>
         <p className="text-xl text-gray-600">

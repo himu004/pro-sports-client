@@ -48,21 +48,21 @@ const Register = () => {
         });
         location("/");
 
-        // const createdAt = result?.user?.metadata?.creationTime;
-
         // Save new user to db
-        // const newUser = {name, email, photoURL, createdAt}
-        // fetch('http://localhost:3000/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type' : 'application/json'
-        //     },
-        //     body: JSON.stringify(newUser)
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log('user created to db',data);
-        // })
+        const newUser = {name, email, photo}
+        fetch('https://pro-sports-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('user created to db',data);
+        })
+
+        
       })
       .catch((error) => {
         const errorCode = error.code;

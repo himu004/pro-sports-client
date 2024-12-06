@@ -6,7 +6,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch("https://pro-sports-server.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -15,7 +15,7 @@ const Products = () => {
     <div>
       <Fade cascade damping={0.3}>
         <div className="text-center mb-12" data-aos="fade-down">
-          <h2 className="text-4xl font-bold text-gray-800 mb-3">
+          <h2 className="text-4xl font-bold text-gray-500 mb-3">
             Our Products
           </h2>
           <p className="text-xl text-gray-600 md:px-0 px-3">

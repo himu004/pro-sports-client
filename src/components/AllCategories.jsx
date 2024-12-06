@@ -8,7 +8,7 @@ const AllCategories = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/category")
+        fetch("https://pro-sports-server.vercel.app/category")
           .then((res) => res.json())
           .then((data) => setCategories(data));
       }, []);
@@ -18,7 +18,7 @@ const AllCategories = () => {
         
         <Fade cascade damping={0.3}>
         <div className="text-center mb-12 pt-10" data-aos="fade-down">
-            <h2 className="text-4xl font-bold text-gray-800 mb-3">All Categories</h2>
+            <h2 className="text-4xl font-bold text-gray-500 mb-3">All Categories</h2>
             <p className="text-xl text-gray-600 md:px-0 px-3">
                Our All Products By Category
             </p>

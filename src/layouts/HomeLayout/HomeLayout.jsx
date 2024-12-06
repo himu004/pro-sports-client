@@ -8,7 +8,7 @@ const HomeLayout = () => {
     <div>
       <HelmetProvider>
         <Helmet>
-          <title>Home</title>
+          <title>Home | Pro Sports</title>
         </Helmet>
         <Header />
         <Outlet />

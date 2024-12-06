@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 const ProductsCard = ({ product }) => {
-  const { image, itemName, categoryName, price, rating, customization } =
+  const { id, image, itemName, categoryName, price, rating, customization } =
     product || {};
 
-  // const {image, itemName, categoryName, description, price, rating, customization, processingTime, stockStatus} = product || {};
+  
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full">
@@ -37,9 +39,9 @@ const ProductsCard = ({ product }) => {
 
         <div>{customization}</div>
         <div className="card-actions justify-end mt-4">
-          <button className="btn btn-neutral btn-outline w-full">
+          <Link to={`/products/${id}`} className="btn btn-neutral btn-outline w-full">
             Vew Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

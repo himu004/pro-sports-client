@@ -8,6 +8,8 @@ import AllEquipment from "../pages/AllEquipment/AllEquipment";
 import PrivateRoutes from "./PrivateRoutes";
 import AddEquipment from "../pages/AddEquipment/AddEquipment";
 import MyEquipment from "../pages/MyEquipment/MyEquipment";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import MyProfile from "../pages/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +43,24 @@ const router = createBrowserRouter([
           path: "/my-equipment",
           element: <PrivateRoutes>
             <MyEquipment />
+          </PrivateRoutes>,
+        },
+        {
+          path: "/products/:id",
+          element: <PrivateRoutes>
+            <ProductDetails />
+          </PrivateRoutes>,
+          // loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`),
+          loader: async () => {
+            const res = await fetch('https://pro-sports-server.vercel.app/products');
+            const data = await res.json();
+            return data; 
+          },
+        },
+        {
+          path: "/my-profile",
+          element: <PrivateRoutes>
+            <MyProfile />
           </PrivateRoutes>,
         },
       ]
