@@ -1,4 +1,5 @@
 
+
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
@@ -63,6 +64,7 @@ const MyEquipmentCard = ({ equipment, addedEquipment,setAddedEquipment }) => {
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 h-full">
+      
       <figure className="px-6 pt-6">
         <img
           src={image}

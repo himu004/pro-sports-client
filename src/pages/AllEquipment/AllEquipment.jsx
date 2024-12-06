@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaSortAmountUp } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -16,6 +17,9 @@ const AllEquipment = () => {
 
     return (
         <div className="container mx-auto py-5">
+            <Helmet>
+                <title>All Equipment | Pro Sports</title>
+            </Helmet>
             <div className="btn btn-neutral btn-outline my-5">
                 <button onClick={handleSortByPrice} className="flex items-center gap-2">
                     <FaSortAmountUp />

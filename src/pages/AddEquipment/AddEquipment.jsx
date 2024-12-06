@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/Context";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
@@ -78,6 +79,9 @@ const AddEquipment = () => {
 
   return (
     <div className="min-h-screen bg-base-200 py-12 px-4">
+      <Helmet>
+        <title>Add Equipment | Pro Sports</title>
+      </Helmet>
       <form
         onSubmit={handleSubmit}
         className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-xl"

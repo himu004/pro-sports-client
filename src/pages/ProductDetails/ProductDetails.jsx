@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet"
 import { useLoaderData, useParams } from "react-router-dom"
 
 const ProductDetails = () => {
@@ -9,6 +10,9 @@ const ProductDetails = () => {
 
     return (
         <div className="max-w-7xl mx-auto my-12 px-4">
+            <Helmet>
+            <title>{itemName} | Pro Sports</title>
+            </Helmet>
             <div className="grid md:grid-cols-2 gap-8">
                 <div className="overflow-hidden rounded-lg">
                     <img src={image} alt={itemName} className="w-full h-[500px] object-cover hover:scale-105 transition-transform" />
