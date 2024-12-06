@@ -76,9 +76,15 @@ const Header = () => {
           {user ? (
             <p>
               Welcome{" "}
-              <span className="font-bold text-lg">{`${
-                savedUser?.name || displayName
-              }`}</span>
+              {
+                loading ? (
+                  <span className="loading loading-infinity loading-lg"></span>
+                ) : (
+                  <span className="font-bold text-lg">{`${
+                    savedUser?.name || displayName
+                  }`}</span>
+                )
+              }
             </p>
           ) : (
             <p className="text-lg">

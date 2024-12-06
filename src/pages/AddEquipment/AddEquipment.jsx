@@ -51,7 +51,7 @@ const AddEquipment = () => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log('new equpment added to db',data);
+        console.log('new equipment added to db',data);
         if(data.insertedId){
             form.reset();
             Swal.fire({

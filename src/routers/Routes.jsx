@@ -46,13 +46,13 @@ const router = createBrowserRouter([
           element: <PrivateRoutes>
             <MyEquipment />
           </PrivateRoutes>,
+          loader: () => fetch('http://localhost:3000/my-equipment'),
         },
         {
           path: "/products/:id",
           element: <PrivateRoutes>
             <ProductDetails />
           </PrivateRoutes>,
-          // loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`),
           loader: async () => {
             const res = await fetch('https://pro-sports-server.vercel.app/products');
             const data = await res.json();
