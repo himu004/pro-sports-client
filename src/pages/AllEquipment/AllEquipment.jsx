@@ -11,8 +11,13 @@ const AllEquipment = () => {
     const [sortedData, setSortedData] = useState(data);
   
     const handleSortByPrice = () => {
-        const newData = [...data].sort((a, b) => b.price - a.price);
-        setSortedData(newData);
+        // const newData = [...data].sort((a, b) => b.price - a.price);
+        // setSortedData(newData);
+
+        fetch("https://pro-sports-server.vercel.app/all-equipment/sort/")
+        .then((res) => res.json())
+        .then((data) => setSortedData(data));
+
     };
 
     return (

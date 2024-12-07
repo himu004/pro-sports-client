@@ -42,7 +42,7 @@ const UpdateProduct = () => {
     };
 
     fetch(`https://pro-sports-server.vercel.app/my-equipment/update/${_id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
