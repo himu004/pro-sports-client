@@ -12,6 +12,7 @@ import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import ViewDetails from "../pages/AllEquipment/ViewDetails";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
           fetch(
             `https://pro-sports-server.vercel.app/update-equipment/${params.id}`
           ),
+      },
+      {
+        path: 'about-us',
+        element: <AboutUs />,
       },
     ],
   },
