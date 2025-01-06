@@ -16,9 +16,9 @@ const ProductsCard = ({ product }) => {
         />
       </figure>
       <div className="card-body">
-        <div className="md:flex items-center justify-between">
+        <div className="">
           <h2 className="card-title text-red-500">{itemName}</h2>
-          <div className="badge badge-neutral">{categoryName}</div>
+          <div className="badge badge-neutral badge-outline">{categoryName}</div>
         </div>
         <div className="flex items-center gap-2">
           <div className="rating rating-sm">

@@ -80,7 +80,7 @@ const Header = () => {
   );
 
   return (
-    <header>
+    <header className="sticky top-0 z-50 bg-base-100 shadow-lg">
       <div className="pt-5 px-5 flex md:flex-row flex-col items-center justify-between">
         <h1>
           {user ? (
